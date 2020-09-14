@@ -4,9 +4,7 @@ import main.gadgets.Gadget;
 import main.gadgets.GadgetType;
 import main.gadgets.Gadget_Basic;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 import java.util.HashMap;
 
@@ -34,22 +32,21 @@ public class Client {
 
     private void sendServerRequest(String request) throws Exception {
         Socket socket = null;
-        DataInputStream input = null;
-        DataOutputStream output = null;
+        BufferedReader input = null;
+        PrintWriter output = null;
         try {
             // Request connection to server
             socket = new Socket("134.209.198.123", 8083);
 
             // Obtain input and output streams
-            input = new DataInputStream(socket.getInputStream());
-            output = new DataOutputStream(socket.getOutputStream());
+            input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            output = new PrintWriter(socket.getOutputStream(), true);
 
             // Send request
-            output.writeUTF(request);
-            output.flush();
+            output.println(request);
 
             // Read response
-            String response = input.readUTF();
+            String response = input.readLine();
 
             // Process response
             processServerResponse(response);
