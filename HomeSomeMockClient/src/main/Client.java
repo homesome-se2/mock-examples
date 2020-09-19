@@ -3,26 +3,49 @@ package main;
 import main.gadgets.Gadget;
 import main.gadgets.GadgetType;
 import main.gadgets.Gadget_Basic;
-
 import java.io.*;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Client {
 
     private HashMap<Integer, Gadget> gadgets;
+    private Socket socket;
+    private BufferedReader input;
+    private PrintWriter output;
+    private Thread outputThread;
+    private final Object lockComm;
+    private volatile boolean terminate;
+    private final String info;
 
     public Client() {
         gadgets = new HashMap<>();
+        socket = null;
+        lockComm = new Object();
+        terminate = false;
+        info = String.format("%s%n%s%n%s%n%s%n%s%n",
+                "==================================================",
+                "Connected to public server, but not yet logged in.",
+                "Start by writing a login request, '101::name::pwd'",
+                "==================================================",
+                "Start asynchronous communication:");
+        outputThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    outputToServer();
+                } catch (Exception e) {
+                    System.out.println("output thread closed");
+                    close();
+                }
+            }
+        });
     }
 
     public void launch() {
-        String requestAllGadgets = "301";
-        String requestGadgetStateChange = "303::1::1";
-
         try {
-            sendServerRequest(requestAllGadgets);
-            sendServerRequest(requestGadgetStateChange);
+            serverCommunication();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -30,37 +53,50 @@ public class Client {
 
     // ========================= SERVER COMMUNICATION ====================================
 
-    private void sendServerRequest(String request) throws Exception {
-        Socket socket = null;
-        BufferedReader input = null;
-        PrintWriter output = null;
+    private void serverCommunication() throws Exception {
         try {
             // Request connection to server
-            socket = new Socket("134.209.198.123", 8083);
+            //socket = new Socket("134.209.198.123", 8083);
+            socket = new Socket("localhost", 8084);
+            System.out.println(info);
 
             // Obtain input and output streams
             input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             output = new PrintWriter(socket.getOutputStream(), true);
 
-            // Send request
-            output.println(request);
+            outputThread.start();
 
-            // Read response
-            String response = input.readLine();
-
-            // Process response
-            processServerResponse(response);
+            inputFromServer();
 
         } catch (IOException e) {
             throw new Exception("Socket connection failed");
         } finally {
-            // Closing the stream resource closes the Socket.
-            if( input != null) {
-                input.close();
+            close();
+        }
+    }
+
+    private void inputFromServer() throws Exception {
+        String msgFromServer;
+        while (!terminate) {
+            // Read msg from client
+            msgFromServer = input.readLine();
+            System.out.println("Msg from server: " + msgFromServer);
+            // Process msg
+            if(msgFromServer.equals("exit")) {
+                close();
+            } else {
+                processServerResponse(msgFromServer);
             }
-            if( output != null) {
-                output.close();
-            }
+        }
+    }
+
+    private void outputToServer() throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        while(!terminate) {
+            // Type request from keyboard
+            output.println(scanner.nextLine());
+            output.flush();
+            System.out.println("msg sent");
         }
     }
 
@@ -70,29 +106,20 @@ public class Client {
 
         String[] commands = response.split("::");
 
-        System.out.println("Msg from server: " + response);
-
         switch (commands[0]) {
-            case "302":
+            case "304":
                 receiveAllGadgets(commands);
                 break;
-            case "304":
-                alterGadgetState(commands);
+            case "316":
+                gadgetStateUpdate(commands);
                 break;
-            case "501":
+            case "901":
+                System.out.println("Exception msg: " + commands[1]);
                 break;
-        }
-
-        if(!gadgets.isEmpty()) {
-            // Print all gadgets
-            for (int key : gadgets.keySet()) {
-                System.out.println(String.format("%-10s: state %s", gadgets.get(key).alias, gadgets.get(key).getState()));
-            }
-        }else {
-            System.out.println("Gadget list is empty.");
         }
     }
 
+    // #304
     private void receiveAllGadgets(String[] commands) throws Exception {
         int nbrOfGadgets = Integer.parseInt(commands[1]);
         int count = 2; // Start index to read in gadgets
@@ -106,17 +133,55 @@ public class Client {
 
             gadgets.put(gadgetID, new Gadget_Basic(gadgetID, alias, type, valueTemplate, state, pollDelaySeconds));
         }
+        printGadgets();
     }
 
-    private void alterGadgetState(String[] commands) throws Exception {
+    // #316
+    private void gadgetStateUpdate(String[] commands) throws Exception {
         int gadgetID = Integer.parseInt(commands[1]);
-        float requestedState = Float.parseFloat(commands[2]);
+        float newState = Float.parseFloat(commands[2]);
 
-        System.out.println("new state = " + requestedState);
+        System.out.println("new state = " + newState);
 
         // Set new state
-        gadgets.get(gadgetID).setState(requestedState);
+        gadgets.get(gadgetID).setState(newState);
+
+        printGadgets();
     }
 
+    private void printGadgets() {
+        if(!gadgets.isEmpty()) {
+            // Print all gadgets
+            for (int key : gadgets.keySet()) {
+                System.out.println(String.format("%-10s: state %s", gadgets.get(key).alias, gadgets.get(key).getState()));
+            }
+        }else {
+            System.out.println("Gadget list is empty.");
+        }
+    }
+
+    // ============================ CLOSE RESOURCES ====================================
+    // Ugly close method
+
+    private void close() {
+        synchronized (lockComm) {
+            if(!terminate) {
+                terminate = true;
+                System.out.println("closing threads");
+                try {
+                    if (socket != null) {
+                        socket.close();
+                    }
+                    if (outputThread.isAlive()) {
+                        System.out.println("output still alive");
+                    }
+                    System.exit(-1);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    // Ignore
+                }
+            }
+        }
+    }
 
 }
