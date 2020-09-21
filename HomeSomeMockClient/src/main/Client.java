@@ -24,11 +24,14 @@ public class Client {
         socket = null;
         lockComm = new Object();
         terminate = false;
-        info = String.format("%s%n%s%n%s%n%s%n%s%n",
-                "==================================================",
+        info = String.format("%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n",
+                "=================================================================================",
                 "Connected to public server, but not yet logged in.",
-                "Start by writing a login request, '101::name::pwd'",
-                "==================================================",
+                "Training simulator for:",
+                "1. Output to public server: Manual client login (any name/pwd works in simulation)",
+                "2. Input from public server: Receive all gadgets of the associated hub",
+                "3. Input from public server: Receive a state update on a gadget (at intervals)",
+                "=================================================================================",
                 "Start asynchronous communication:");
         outputThread = new Thread(new Runnable() {
             @Override
@@ -56,8 +59,8 @@ public class Client {
     private void serverCommunication() throws Exception {
         try {
             // Request connection to server
-            //socket = new Socket("134.209.198.123", 8083);
-            socket = new Socket("localhost", 8084);
+            socket = new Socket("134.209.198.123", 8084);
+            //socket = new Socket("localhost", 8084);
             System.out.println(info);
 
             // Obtain input and output streams
@@ -141,8 +144,6 @@ public class Client {
         int gadgetID = Integer.parseInt(commands[1]);
         float newState = Float.parseFloat(commands[2]);
 
-        System.out.println("new state = " + newState);
-
         // Set new state
         gadgets.get(gadgetID).setState(newState);
 
@@ -152,9 +153,11 @@ public class Client {
     private void printGadgets() {
         if(!gadgets.isEmpty()) {
             // Print all gadgets
+            System.out.println("========= ALL GADGETS ===========");
             for (int key : gadgets.keySet()) {
-                System.out.println(String.format("%-10s: state %s", gadgets.get(key).alias, gadgets.get(key).getState()));
+                System.out.println(String.format("%-13s: state %s", gadgets.get(key).alias, gadgets.get(key).getState()));
             }
+            System.out.println("=================================");
         }else {
             System.out.println("Gadget list is empty.");
         }
