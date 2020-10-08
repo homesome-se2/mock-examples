@@ -1,10 +1,10 @@
-package main.gadgets;
+package com.homesome.model;
 
 public class Gadget_Basic extends Gadget {
 
     /**
-     * Class representing interface to native HomeSome hardware (physical) gadgets of all GadgetTypes.
-     * The gadgets interacted with via this class are commonly built upon Arduino based WiFi-modules.
+     * Class representing interface to native HomeSome hardware (physical) com.homesome.model of all GadgetTypes.
+     * The com.homesome.model interacted with via this class are commonly built upon Arduino based WiFi-modules.
      */
 
     public Gadget_Basic(int gadgetID, String alias, GadgetType type, String valueTemplate, long pollDelaySeconds) {

@@ -1,4 +1,4 @@
-package main.gadgets;
+package com.homesome.model;
 
 public abstract class Gadget {
 
@@ -18,7 +18,7 @@ public abstract class Gadget {
      * @see #poll() Polls the gadget state and presence at interval: pollDelaySec
      * - Objective: set isPresent
      * - Objective: set state
-     * @see #alterState(float) Sends request to gadget to alter its state (for non-sensor gadgets)
+     * @see #alterState(float) Sends request to gadget to alter its state (for non-sensor com.homesome.model)
      * - Objective: communicate state change request to gadget
      * - Objective: set state
      * @see #sendCommand(String) Used by #poll() and #alterState() to communicate with the gadget
@@ -35,7 +35,7 @@ public abstract class Gadget {
     public final long pollDelaySec;
     public boolean isPresent;
 
-    // Gadgets instantiated from JSON file (gadgets.json) at system boot??
+    // Gadgets instantiated from JSON file (com.homesome.model.json) at system boot??
     public Gadget(int gadgetID, String alias, GadgetType type, String valueTemplate, long pollDelaySeconds) {
         this.id = gadgetID;
         this.alias = alias;
