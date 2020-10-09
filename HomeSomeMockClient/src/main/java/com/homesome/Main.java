@@ -14,6 +14,6 @@ public class Main {
             }
         }));
 
-	client.launchApp();
+	client.launchApp(); 
     }
 }
