@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "MainActivity: In the onCreate() event");
 
     }
+
 
     @Override
     public void onBackPressed() {
@@ -40,13 +39,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "MainActivity: In the onResume() event");
-        AppManager.getInstance().createTCPConnection();
     }
 
     protected void onPause() {
         super.onPause();
         Log.d(TAG, "MainActivity: In the onPause() event");
-        AppManager.getInstance().closeTCPConnection();
+        AppManager.getInstance().closeServerConnection();
     }
 
     protected void onStop() {
