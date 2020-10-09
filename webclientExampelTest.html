@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Websockets</title>
+</head>
+<script>
+    const ws = new WebSocket("ws://134.209.198.123:8084/homesome")
+    ws.addEventListener("open", () => {
+        console.log("We are connected!");
+
+        ws.send("101::Sebastian::ffff")
+    });
+
+    ws.addEventListener("message", ({ data }) =>{
+        console.log(data);
+        var res = data.split('::');
+        var x;
+        x = res[2] == 1 ? "ON" : "OFF";
+        document.getElementById("p1").innerHTML = "Light: " + x;
+    });
+</script>
+<body>
+<h1>Websockets basics</h1>
+<ul>
+    <li>Allows two-way, event driven communication betwwn web browser and server</li>
+    <li><p id="p1">Hello World!</p></li>
+</ul>
+
+
+</body>
+</html>
