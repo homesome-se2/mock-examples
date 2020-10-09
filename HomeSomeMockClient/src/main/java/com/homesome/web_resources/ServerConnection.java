@@ -40,7 +40,8 @@ public class ServerConnection {
     public void connectToServer() {
         try {
             WebSocketContainer container = ContainerProvider.getWebSocketContainer();
-            String uri = "ws://localhost:8084/homesome";
+            String uri = "ws://134.209.198.123:8084/homesome";
+            //String uri = "ws://localhost:8084/homesome";
             container.connectToServer(WebSocketClient.class, URI.create(uri)); // returns a WebSocket session object
         } catch (Exception e) {
             e.printStackTrace();
