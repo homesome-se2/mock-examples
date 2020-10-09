@@ -1,0 +1,47 @@
+# HomeSome specifics
+/config.json
+*.json
+
+# Compiler output (IntelliJ)
+**/out/
+**/artifacts/
+
+# File-based project format
+**/.iws 
+
+# User specific 
+**/.txt
+**/.ser
+**/.idea/**/workspace.xml
+**/.idea/**/tasks.xml
+**/.idea/**/usage.statistics.xml
+**/.idea/**/dictionaries
+**/.idea/**/shelf
+
+# Generated files
+**/.idea/**/contentModel.xml
+
+# Sensitive or high-churn files
+**/.idea/**/dataSources/
+**/.idea/**/dynamic.xml
+**/.idea/**/uiDesigner.xml
+
+# The outputs that can create a merge conflict
+**/.idea/**/misc.xml
+**/.idea/**/modules.xml
+**/.idea/**/public-server.iml
+**/.idea/
+
+# Maven
+**/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
+!/.mvn/wrapper/maven-wrapper.jar
