@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment implements ResponseUpdatable {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AppManager.getInstance().requestToServer("101::anton::pwd");
+                AppManager.getInstance().requestToServer("101::Sebastian::ffff");
             }
         });
 
@@ -86,7 +86,6 @@ public class HomeFragment extends Fragment implements ResponseUpdatable {
                 multiViewTypeAdapter.notifyDataSetChanged();
                 break;
             case 316:
-                Log.i(TAG,"Case 16 happend");
                 Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
                 multiViewTypeAdapter.notifyDataSetChanged();
                 break;
@@ -142,6 +141,8 @@ public class HomeFragment extends Fragment implements ResponseUpdatable {
     public void onResume() {
         super.onResume();
         Log.d(TAG, "HomeFragment: In the onResume() event");
+        AppManager.getInstance().createServerConnection();
+
     }
 
     //7
@@ -150,7 +151,6 @@ public class HomeFragment extends Fragment implements ResponseUpdatable {
         super.onPause();
         Log.d(TAG, "HomeFragment: In the onPause() event");
         gadgetCards.clear();
-        multiViewTypeAdapter.notifyDataSetChanged();
     }
 
     //8
@@ -175,4 +175,5 @@ public class HomeFragment extends Fragment implements ResponseUpdatable {
     }
 
 }
+
 

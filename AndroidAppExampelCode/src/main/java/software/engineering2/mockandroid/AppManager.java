@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 import software.engineering2.mockandroid.models.gadgets.GadgetType;
 import software.engineering2.mockandroid.models.gadgets.Gadget_basic;
+import software.engineering2.mockandroid.network.HTTPNetworkService;
 
 public class AppManager {
     private static final String TAG = "Info";
@@ -15,7 +16,7 @@ public class AppManager {
     // Holds a reference to the fragment currently displayed
     public ResponseUpdatable currentFragmentView;
     // NetWork service
-    private TCPNetworkService tcpNetworkService;
+    private HTTPNetworkService httpNetworkService;
 
     // map for gadgets. GadgetID/object
     private HashMap<Integer, Gadget_basic> gadgets;
@@ -37,6 +38,7 @@ public class AppManager {
         handler = new Handler();
         currentFragmentView = null;
         gadgets = new HashMap<>();
+
     }
 
     public void handleServerResponse(String response) {
@@ -55,26 +57,19 @@ public class AppManager {
 
     }
 
-    public void requestToServer(String request) {
-        tcpNetworkService.sendMessage(request);
-    }
-
     // =========================== HANDLE NETWORK CONNECTION ===============================
 
-    public void createTCPConnection() {
-        tcpNetworkService = new TCPNetworkService(handler);
-        Thread threadsd = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                tcpNetworkService.connect();
-            }
-        });
-        threadsd.start();
+    public void createServerConnection() {
+        httpNetworkService = new HTTPNetworkService(handler);
     }
 
-    public void closeTCPConnection() {
-        tcpNetworkService.stopClient();
+    public void closeServerConnection() {
+        httpNetworkService.getWebSocketClient().close();
+        Log.i(TAG, "C: Socket is closed!");
+    }
 
+    public void requestToServer(String request) {
+        httpNetworkService.getWebSocketClient().send(request);
     }
 
     // =====================================================================================
