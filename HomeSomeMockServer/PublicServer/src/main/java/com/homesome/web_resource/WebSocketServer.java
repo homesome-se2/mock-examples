@@ -19,7 +19,6 @@ public class WebSocketServer {
     // New client connected to WebSocket server
     @OnWebSocketConnect
     public void onConnect(Session session) throws Exception {
-        session.setIdleTimeout(60*1000); // Server closes session (connection) if idle.
         ClientHandler.getInstance().addClient(session);
     }
 

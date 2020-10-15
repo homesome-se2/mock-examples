@@ -1,6 +1,7 @@
 package com.homesome;
 
 import com.homesome.model.Gadget;
+import com.homesome.model.GadgetGroup;
 import com.homesome.model.GadgetType;
 import com.homesome.model.Gadget_Basic;
 import com.homesome.web_resources.ServerConnection;
@@ -48,12 +49,8 @@ public class ClientApp {
         try {
             // Print menu
             System.out.println(info);
-            // Start WebSocket connection to server
-            ServerConnection.getInstance().connectToServer();
-            // Read client input to send to server
-            outputThread.start();
-            // Process incoming commands from server.
-            inputFromServer();
+            // Initiate login procedure
+            login();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             closeApp();
@@ -70,6 +67,18 @@ public class ClientApp {
     }
 
     // ========================= SERVER COMMUNICATION ====================================
+
+    private void login() throws Exception {
+        System.out.println("Enter login request:");
+        Scanner scanner = new Scanner(System.in);
+        String loginRequest = scanner.nextLine();
+        // Start WebSocket connection to server
+        ServerConnection.getInstance().connectToServer(loginRequest);
+        // Read client input to send to server
+        outputThread.start();
+        // Process incoming commands from server.
+        inputFromServer();
+    }
 
     private void outputToServer() throws Exception {
         Scanner scanner = new Scanner(System.in);
@@ -98,6 +107,9 @@ public class ClientApp {
                 case "316":
                     gadgetStateUpdate(commands);
                     break;
+                case "373":
+                    receiveGadgetGroups(commands);
+                    break;
                 case "901":
                     System.out.println("Exception msg: " + commands[1]);
                     break;
@@ -113,7 +125,7 @@ public class ClientApp {
         boolean admin = commands[2].equals("true");
         String homeAlias = commands[3];
         String sessionKey = commands[4];
-        System.out.println(String.format("%s%n%-13s%s%n%-13s%s%n%-13s%s%n%-13s%s%n%s%n",
+        System.out.println(String.format("%s%n%-13s%s%n%-13s%s%n%-13s%s%n%-13s%s%n%s",
                 "======= SUCCESSFUL LOGIN ========",
                 "Name:", name,
                 "Admin:", admin ? "Yes" : "No",
@@ -150,17 +162,41 @@ public class ClientApp {
         printGadgets();
     }
 
+    // #373
+    private void receiveGadgetGroups(String[] commands) throws Exception {
+        System.out.println("======== GADGET GROUPS ==========");
+        for(int group = 1 ; group < commands.length ; group++) {
+            String[] groupItems = commands[group].split(":");
+            String groupName = groupItems[0];
+            int[] gadgetIDs = new int[groupItems.length - 1];
+            for (int i = 1 ; i < groupItems.length ; i++) {
+                gadgetIDs[i-1] = Integer.parseInt(groupItems[i]);
+            }
+            GadgetGroup gadgetGroup = new GadgetGroup(groupName, gadgetIDs);
+            printGadgetGroup(gadgetGroup);
+        }
+        System.out.println("=================================");
+    }
+
     private void printGadgets() {
         if (!gadgets.isEmpty()) {
             // Print all model
             System.out.println("========= ALL GADGETS ===========");
             for (int key : gadgets.keySet()) {
-                System.out.println(String.format("%-13s: state %s", gadgets.get(key).alias, gadgets.get(key).getState()));
+                System.out.println(String.format("%-13s state %s", gadgets.get(key).alias, gadgets.get(key).getState()));
             }
             System.out.println("=================================");
         } else {
             System.out.println("Gadget list is empty.");
         }
+    }
+
+    private void printGadgetGroup(GadgetGroup group) {
+        String gadgetIDs = "";
+        for(int i = 0 ; i < group.gadgetIDs.length ; i++) {
+            gadgetIDs = String.format("%s%s%s", gadgetIDs, group.gadgetIDs[i], (i == (group.gadgetIDs.length - 1) ? "" : ","));
+        }
+        System.out.println(String.format("%-13s[%s]", group.name,gadgetIDs));
     }
 
 }

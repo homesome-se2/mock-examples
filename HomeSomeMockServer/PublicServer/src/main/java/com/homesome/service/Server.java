@@ -93,6 +93,12 @@ public class Server {
                     case "315":
                         receiveGadgetStateChange(commands, sessionID);
                         break;
+                    case "370":
+                        requestGadgetGroups(sessionID);
+                        break;
+                    case "372":
+                        receiveGadgetGroups(commands);
+                        break;
                     default:
                         String msg = "901::Invalid format";
                         ClientHandler.getInstance().outputToClients(sessionID, false, true, false, msg);
@@ -166,6 +172,27 @@ public class Server {
         String forwardMsg = String.format("%s::%s::%s", "316", gadgetID, newState);
         // Send to all users associated with that hub
         ClientHandler.getInstance().outputToClients(issuingSessionID, false, false, false, forwardMsg);
+    }
+
+    // #370 -> #371
+    private void requestGadgetGroups(int issuingSessionID) {
+        String forwardRequest = String.format("%s::%s", "371", issuingSessionID);
+        // Send request to same hub as client with sessionID "issuingSessionID is associated with.
+        //TODO: Implement
+
+        mock.requestGadgetGroups(issuingSessionID); //TODO: REMOVE LATER
+    }
+
+    // #372 -> #373
+    private void receiveGadgetGroups(String[] commands) throws Exception {
+        int targetSessionID = Integer.parseInt(commands[1]);
+        String forwardGroups = "373";
+        // Encapsulate (build) new command from the decapsulated incoming command (according to protocol)
+        for (int command = 2 ; command < commands.length ; command++) {
+            forwardGroups = String.format("%s::%s", forwardGroups, commands[command]);
+        }
+        // Send to individual client
+        ClientHandler.getInstance().outputToClients(targetSessionID,false, true, false, forwardGroups);
     }
 
     // ===================================== DEBUG LOGS =======================================================

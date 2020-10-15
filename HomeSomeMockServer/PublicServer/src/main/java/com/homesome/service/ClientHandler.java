@@ -28,7 +28,6 @@ public class ClientHandler {
 
     private HashMap<Session, Client> connectedClients;
 
-    private int clientLimit;
     private DB_Clients clientDB;
     private final Object lock_clients;
     private final Object lock_login;
@@ -52,11 +51,11 @@ public class ClientHandler {
     }
 
     public void launchWebSocketServer(int serverTcpPort, int clientLimit) {
-        this.clientLimit = clientLimit;
-
         // Create web socket listening on a path, and being implemented by a class.
         Spark.webSocket("/homesome", WebSocketServer.class);
         Spark.port(serverTcpPort);
+        // Thread pool limit
+        Spark.threadPool(clientLimit);
         Spark.init();
         // Browser test: http://localhost:tcpPort/
         // If no web page is provided, should say "404 Error, com.homesome.service powered by Jetty"
@@ -72,16 +71,11 @@ public class ClientHandler {
 
     public void addClient(Session session) {
         synchronized (lock_clients) {
-
-            if (connectedClients.size() <= clientLimit) {
-                Client newClient = new Client();
-                connectedClients.put(session, newClient);
-            } else {
-                System.out.println("Client limit reached.");
-                if(session.isOpen()) {
-                    session.close();
-                }
-            }
+            // Default idle threshold (for not logged in clients)
+            session.setIdleTimeout(2000);
+            // Map session to new generic client instance
+            Client newClient = new Client();
+            connectedClients.put(session, newClient);
             debugLog("Connected clients", String.valueOf(connectedClients.size()));
         }
     }
@@ -104,10 +98,16 @@ public class ClientHandler {
             debugLog("Request from client", getIP(session), request);
             try {
                 if (connectedClients.get(session).loggedIn) {
-                    // Add request to server
-                    ClientRequest newRequest = new ClientRequest(connectedClients.get(session).sessionID, request);
-                    Server.getInstance().clientRequests.put(newRequest);
+                    if(request.toLowerCase().equals("ping")) {
+                        // Ping. Resets idle time.
+                        debugLog("Ping from client", getIP(session));
+                    } else {
+                        // Add request to server
+                        ClientRequest newRequest = new ClientRequest(connectedClients.get(session).sessionID, request);
+                        Server.getInstance().clientRequests.put(newRequest);
+                    }
                 } else {
+                    session.setIdleTimeout(60 * 1000); // Increase idle threshold
                     clientLogin(session, request);
                 }
             } catch (Exception e) {
