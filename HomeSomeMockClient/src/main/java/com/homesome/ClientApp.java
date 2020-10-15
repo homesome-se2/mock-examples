@@ -21,13 +21,14 @@ public class ClientApp {
         gadgets = new HashMap<>();
         lockObject = new Object();
         terminate = false;
-        info = String.format("%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n",
+        info = String.format("%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n",
                 "=================================================================================",
                 "Connected to public server, but not yet logged in.",
                 "Training simulator for:",
-                "¤ Output to public server: Manual client login (any name/pwd works in simulation)",
+                "¤ Request to public server: Manual client login (any name/pwd works in simulation)",
                 "¤ Input from public server: Receive all gadgets of the associated hub",
                 "¤ Input from public server: Receive a state update on a gadget (at intervals)",
+                "¤ Request gadget groups",
                 "=================================================================================",
                 "Start asynchronous communication:");
         outputThread = new Thread(new Runnable() {
