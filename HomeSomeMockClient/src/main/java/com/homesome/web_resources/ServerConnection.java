@@ -15,6 +15,9 @@ public class ServerConnection {
     private Session session;
     private volatile boolean connectedToServer;
 
+    // Temp holder. Send and erase when connection is established.
+    private String loginRequest;
+
     private final Object lockObject_output;
     private final Object lockObject_close;
 
@@ -37,11 +40,12 @@ public class ServerConnection {
     }
 
     // Called from class ClientApp
-    public void connectToServer() {
+    public void connectToServer(String loginRequest) {
+        this.loginRequest = loginRequest;
         try {
             WebSocketContainer container = ContainerProvider.getWebSocketContainer();
             String uri = "ws://134.209.198.123:8084/homesome";
-            //String uri = "ws://localhost:8084/homesome";
+            // String uri = "ws://localhost:8084/homesome";
             container.connectToServer(WebSocketClient.class, URI.create(uri)); // returns a WebSocket session object
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,8 +71,11 @@ public class ServerConnection {
 
     // Called from class WebSocketClient
     public void onServerConnect(Session session) {
+        System.out.println("Connected to server");
         this.session = session;
         connectedToServer = true;
+        // Send login request
+        writeToServer(loginRequest);
     }
 
     // Called from class WebSocketClient
