@@ -1,19 +1,21 @@
 package com.homesome.web_resources;
 
+import com.homesome.service.Hub;
+
 import javax.websocket.ContainerProvider;
 import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
 import java.net.URI;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
 
 public class ServerConnection {
 
-    // Queue holding incoming commands from server. Processed in class ClientApp
-    public BlockingQueue<String> serverCommands;
     // Instance representing the session being established between client and server.
     private Session session;
     private volatile boolean connectedToServer;
+    public volatile boolean loggedInToServer;
+
+    // Session management: Ping and reconnect
+    private Thread manageConnThread;
 
     // Temp holder. Send and erase when connection is established.
     private String loginRequest;
@@ -32,11 +34,21 @@ public class ServerConnection {
     }
 
     private ServerConnection(){
-        serverCommands = new ArrayBlockingQueue<>(10);
         session = null;
         connectedToServer = false;
+        loggedInToServer = false;
         lockObject_output = new Object();
         lockObject_close = new Object();
+        manageConnThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    manageConnection();
+                } catch (Exception e) {
+                    System.out.println("Server connection no longer managed");
+                }
+            }
+        });
     }
 
     // Called from class ClientApp
@@ -44,19 +56,21 @@ public class ServerConnection {
         this.loginRequest = loginRequest;
         try {
             WebSocketContainer container = ContainerProvider.getWebSocketContainer();
-            String uri = "ws://134.209.198.123:8084/homesome";
-            //String uri = "ws://localhost:8084/homesome";
+            //String uri = Hub.getInstance().settings.publicServerURL_localTest;
+            String uri = Hub.getInstance().settings.publicServerURL;
             container.connectToServer(WebSocketClient.class, URI.create(uri)); // returns a WebSocket session object
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Unable to connect to server"); // TODO: Don't use e.printStackTrace (Will eat memory)
         }
     }
 
-    // Called from class ClientApp
+    // Called from class Hub
     public void closeConnection() {
         synchronized (lockObject_close) {
             if (connectedToServer) {
                 connectedToServer = false;
+                loggedInToServer = false;
+                manageConnThread.interrupt();
                 try {
                     if (session.isOpen()) {
                         session.close();
@@ -74,6 +88,9 @@ public class ServerConnection {
         System.out.println("Connected to server");
         this.session = session;
         connectedToServer = true;
+        if(!manageConnThread.isAlive()) {
+            manageConnThread.start();
+        }
         // Send login request
         writeToServer(loginRequest);
     }
@@ -81,18 +98,19 @@ public class ServerConnection {
     // Called from class WebSocketClient
     public void onServerClose() {
         connectedToServer = false;
-        System.out.println("Server closed the session");
+        loggedInToServer = false;
+        System.out.println("Server closed the session. Will attempt reconnection in 45 sec");
     }
 
     // Called from class ClientApp
     public void writeToServer(String msg) {
         synchronized (lockObject_output) {
-            System.out.println("Msg to server: " + msg);
             try {
-                if (connectedToServer && session.isOpen()) {
-                    session.getBasicRemote().sendText(msg);
-                } else {
-                    System.out.println("Not connected to the server");
+                if (connectedToServer) {
+                    if(session.isOpen()) {  //TODO: Need to have this separated from the above if?
+                        debugLog("Msg to server: " + msg);
+                        session.getBasicRemote().sendText(msg);
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -102,14 +120,31 @@ public class ServerConnection {
 
     // Called from class WebSocketClient
     public void newCommandFromServer(String msg) {
-        System.out.println("Msg from server: " + msg);
+        debugLog("Msg from server: " + msg);
         try {
-            serverCommands.put(msg);
+            Hub.getInstance().requests.put(msg);
         } catch (InterruptedException e) {
             // Ignore
         }
     }
 
-    //TODO: Here or in WebSocket implementation class: Scheduler/timer to send a ping msg to server at intervals.
-    // Server closes client connections after 1 min idle = Clients must break the idle state periodically.
+    // Automatic ping and reconnect
+    // Run by worker thread. Closed by interrupting it (interrupt sleep -> throws exception).
+    private void manageConnection() throws Exception {
+        long pingInterval = 45 * 1000;
+        while(!Hub.getInstance().terminate) {
+            Thread.sleep(pingInterval);
+            if(loggedInToServer) {
+                writeToServer("ping");
+            } else {
+                if(!connectedToServer) {
+                    connectToServer(loginRequest);
+                }
+            }
+        }
+    }
+
+    private synchronized void debugLog(String log) {
+        Hub.getInstance().debugLog(log);
+    }
 }
