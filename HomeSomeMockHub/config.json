@@ -1,0 +1,11 @@
+{
+  "debugMode": true,
+  "enableAddGadgets": false,
+  "tcpPortAddGadgets": 8084,
+  "enableRemoteAccess": true,
+  "hubAlias": "My residence",
+  "hubID": 101,
+  "hubPwd": "jv74c64mks43df",
+  "publicServerURL": "ws://134.209.198.123:8084/homesome",
+  "publicServerURL_localTest": "ws://localhost:8084/homesome"
+}
