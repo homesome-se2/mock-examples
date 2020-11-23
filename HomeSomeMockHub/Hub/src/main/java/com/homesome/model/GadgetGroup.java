@@ -18,3 +18,4 @@ public class GadgetGroup {
         return group;
     }
 }
+

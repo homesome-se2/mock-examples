@@ -1,0 +1,18 @@
+[
+  {
+    "groupName": "All lamps",
+    "gadgetIDs": [1, 2]
+  },
+  {
+    "groupName": "All gadgets",
+    "gadgetIDs": [1, 2, 3, 4, 5]
+  },
+  {
+    "groupName": "Kitchen",
+    "gadgetIDs": [2, 5]
+  },
+  {
+    "groupName": "IT",
+    "gadgetIDs": [3]
+  }
+]

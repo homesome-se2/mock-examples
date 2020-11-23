@@ -38,8 +38,13 @@ public abstract class Gadget {
     // Set instance variable 'state' to match actual state (called when a gadget has reported a state change)
     public void setState(double newState) {
         boolean isBinaryGadget = (type == GadgetType.SWITCH || type == GadgetType.BINARY_SENSOR);
+        boolean isSetValue = type == GadgetType.SET_VALUE;
         if (isBinaryGadget) {
             state = (newState == 1 ? 1 : 0);
+        } else if(isSetValue) {
+            //TODO: THIS IS SOMETHING THAT WOULD BE DONE IN THE GADGET IN A NOT MOCK IMPLEMENTATION
+            newState = Math.round(newState); // Round to integer
+            state = newState < 0 ? 0 : (newState > 100 ? 100 : newState); // Set it to an integer within span 0-100
         } else {
             state = newState;
         }

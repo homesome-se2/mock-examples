@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "alias": "My Lamp",
+    "enable" true,
+    "type": "SWITCH",
+    "valueTemplate": "light",
+    "requestSpec": "null",
+    "pollDelaySec": 30,
+    "unitMac": "5C:CF:7F:0B:98:D8",
+    "ip": "192.168.0.23",
+    "port": 8084
+  },
+  {
+    "id": 2,
+    "alias": "Window Lamp",
+    "enable" true,
+    "type": "SWITCH",
+    "valueTemplate": "light",
+    "requestSpec": "null",
+    "pollDelaySec": 60,
+    "unitMac": "00:0a:95:9d:68:16",
+    "ip": "192.168.0.24",
+    "port": 8084
+  },
+  {
+    "id": 3,
+    "alias": "Ad-blocker",
+    "enable" true,
+    "type": "SWITCH",
+    "valueTemplate": "default",
+    "requestSpec": "null",
+    "pollDelaySec": 3600,
+    "unitMac": "00:A0:C9:14:C8:29",
+    "ip": "192.168.0.25",
+    "port": 8084
+  },
+  {
+    "id": 4,
+    "alias": "Front door",
+    "enable" true,
+    "type": "BINARY_SENSOR",
+    "valueTemplate": "door",
+    "requestSpec": "null",
+    "pollDelaySec": 2,
+    "unitMac": "00:00:0A:BB:28:FC",
+    "ip": "192.168.0.26",
+    "port": 8084
+  },
+  {
+    "id": 5,
+    "alias": "Temperature",
+    "enable" true,
+    "type": "SENSOR",
+    "valueTemplate": "temp",
+    "requestSpec": "temp",
+    "pollDelaySec": 120,
+    "unitMac": "00:1B:44:11:3A:B7",
+    "ip": "192.168.0.27",
+    "port": 8084
+  },
+]

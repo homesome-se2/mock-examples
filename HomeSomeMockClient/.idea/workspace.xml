@@ -3,10 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="cc851c4e-1edb-41ea-a07b-24b52e665671" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/homesome/web_resources/ServerConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/homesome/web_resources/ServerConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/homesome/ClientApp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/homesome/ClientApp$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/homesome/ClientApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/homesome/ClientApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/homesome/web_resources/ServerConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/homesome/web_resources/ServerConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/Hub.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/out/artifacts/Hub_jar/Hub.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/out/artifacts/Hub_jar/Hub.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/src/main/java/com/homesome/model/Gadget.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/src/main/java/com/homesome/model/Gadget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/src/main/java/com/homesome/model/GadgetGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/src/main/java/com/homesome/model/GadgetGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/src/main/java/com/homesome/model/Gadget_Basic.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/src/main/java/com/homesome/model/Gadget_Basic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/src/main/java/com/homesome/service/GadgetAdder.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/src/main/java/com/homesome/service/GadgetAdder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/src/main/java/com/homesome/service/Hub.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/src/main/java/com/homesome/service/Hub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/target/classes/com/homesome/model/Gadget.class" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/target/classes/com/homesome/model/Gadget.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/target/classes/com/homesome/model/Gadget_Basic.class" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/target/classes/com/homesome/model/Gadget_Basic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/target/classes/com/homesome/service/GadgetAdder$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/target/classes/com/homesome/service/GadgetAdder$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/target/classes/com/homesome/service/GadgetAdder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/target/classes/com/homesome/service/GadgetAdder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/target/classes/com/homesome/service/Hub$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/target/classes/com/homesome/service/Hub$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/target/classes/com/homesome/service/Hub.class" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeSomeMockHub/Hub/target/classes/com/homesome/service/Hub.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HomeSomeMockHub/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeSomeMockHub/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webclientExampelTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/../webclientExampelTest.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -15,6 +27,11 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/HomeSomeMockClient$Main__1_.ic" NAME="Main (1) Coverage Results" MODIFIED="1605181621908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.homesome.*</FILTER>
+    </SUITE>
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1987243275">
@@ -51,31 +68,34 @@
     <session id="-1494941270">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="25" />
+          <entry key="project.closed" value="34" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="11" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.19" value="1" />
-          <entry key="project.open.time.2" value="4" />
+          <entry key="project.open.time.2" value="7" />
           <entry key="project.open.time.25" value="1" />
+          <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.29" value="2" />
-          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.3" value="3" />
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.33" value="2" />
-          <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="26" />
+          <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.4" value="2" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="35" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="3" />
-          <entry key="java" value="5023" />
+          <entry key="java" value="5028" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5023" />
+          <entry key="JAVA" value="5028" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="XML" value="1" />
         </counts>
@@ -98,11 +118,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/ClientApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1508">
-              <caret line="64" column="60" selection-start-line="64" selection-start-column="60" selection-end-line="64" selection-end-column="60" />
+            <state relative-caret-position="17">
+              <caret line="56" column="23" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -128,11 +148,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/web_resources/ServerConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="47" column="14" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
+            <state relative-caret-position="901">
+              <caret line="58" column="42" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -170,7 +190,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="238">
               <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
             </state>
           </provider>
@@ -227,10 +247,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
-    <option name="y" value="35" />
-    <option name="width" value="1296" />
-    <option name="height" value="1000" />
+    <option name="x" value="-1374" />
+    <option name="y" value="278" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -388,9 +408,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="35" width="1296" height="1000" extended-state="6" />
+    <frame x="-1374" y="278" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24271844" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20953101" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -399,7 +419,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.43764433" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.66885245" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -416,6 +436,7 @@
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Maven Projects" order="7" weight="0.32995737" />
+      <window_info active="true" anchor="right" id="Coverage" order="8" side_tool="true" visible="true" weight="0.32980332" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -439,8 +460,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/ClientApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1508">
-          <caret line="64" column="60" selection-start-line="64" selection-start-column="60" selection-end-line="64" selection-end-column="60" />
+        <state relative-caret-position="17">
+          <caret line="56" column="23" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -458,6 +479,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/web_resources/ServerConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="58" column="42" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -484,18 +515,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="238">
           <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/web_resources/ServerConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="47" column="14" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
