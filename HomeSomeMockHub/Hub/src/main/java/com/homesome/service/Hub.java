@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
@@ -18,7 +19,7 @@ public class Hub {
     private GadgetAdder gadgetAdder;
     public BlockingQueue<String> requests;
     private HashMap<Integer, Gadget> gadgets;
-    private ArrayList<GadgetGroup> gadgetGroups;
+    private ArrayList<GadgetGroup> gadgetGroups;;
 
     //Settings
     public volatile Settings settings;
@@ -102,6 +103,14 @@ public class Hub {
         }
     }
 
+   /* private void readInGadgetGroups() throws Exception{
+        try (FileReader reader = new FileReader(gadgetGroupsJsonPath)){
+            gadgetGroups = new Gson().fromJson(reader, GadgetGroup[].class);
+        } catch (FileNotFoundException e) {
+            throw new Exception("Unable to read gadget groups from gadgetGroups.json");
+        }
+    }*/
+
     private void close() {
         if (!terminate) {
             terminate = true;
@@ -176,12 +185,13 @@ public class Hub {
     // #312
     private void requestToAlterGadgetState(String[] request) throws Exception {
         int gadgetID = Integer.parseInt(request[1]);
-        float requestedState = Integer.parseInt(request[2]);
+        double requestedState = Double.parseDouble(request[2]);
         synchronized (lock_gadgets) {
-            double currentState = gadgets.get(gadgetID).getState();
-            if (currentState != requestedState) {
-                gadgets.get(gadgetID).setState(requestedState);
-                currentState = gadgets.get(gadgetID).getState();
+            Gadget gadget = gadgets.get(gadgetID);
+            double currentState = gadget.getState();
+            if (gadget.type == GadgetType.SWITCH || gadget.type == GadgetType.SET_VALUE) {
+                gadget.setState(requestedState);
+                currentState = gadget.getState();
             }
             String response = String.format("315::%s::%s", gadgetID, currentState);
             ServerConnection.getInstance().writeToServer(response);
@@ -212,27 +222,30 @@ public class Hub {
     private void addGadgets(String[] request) {
         try {
             String gadgetIp = request[request.length-1]; // Appended by class GadgetAdder.
-            int gadgetPort = Integer.parseInt(request[1]);
-            int nbrOfGadgets = Integer.parseInt(request[2]);
-            int count = 2;
-            for (int i = 0; i < nbrOfGadgets; i++) {
-                String alias = request[++count];
-                GadgetType type = GadgetType.valueOf(request[++count]);
-                String requestSpec = request[++count];
-                // Generate the rest of the values:
-                int gadgetID = generateGadgetID();
-                String valueTemplate = "default";
-                long pollDelaySeconds = 30;
-                Gadget_Basic newGadget = new Gadget_Basic(gadgetID, alias, type, valueTemplate, requestSpec, pollDelaySeconds, gadgetIp, gadgetPort);
-                synchronized (lock_gadgets) {
-                    gadgets.put(gadgetID, newGadget);
-                    //TODO: New gadget should NOT be sent to PS here. Instead that should be done by poll, when isPresent == true.
-                    //TODO: = Notify public server of new gadget(s) (#351): This is automatically done when gadget is discovered in poll()
-                    //TODO: In hub: Constructor should set gadgets to: isPresent = false, lastPoll = 0 (to force poll on next poll iteration).
-                    String output = String.format("351::%s", newGadget.toHoSoProtocol());
-                    ServerConnection.getInstance().writeToServer(output);
+            String unitMac = request[1];
+            if(!gadgetAlreadyAdded(unitMac)) {
+                int gadgetPort = Integer.parseInt(request[2]);
+                int nbrOfGadgets = Integer.parseInt(request[3]);
+                int count = 3;
+                for (int i = 0; i < nbrOfGadgets; i++) {
+                    String alias = request[++count];
+                    GadgetType type = GadgetType.valueOf(request[++count]);
+                    String requestSpec = request[++count];
+                    // Generate the rest of the values:
+                    int gadgetID = generateGadgetID();
+                    String valueTemplate = "default";
+                    long pollDelaySeconds = 30;
+                    Gadget_Basic newGadget = new Gadget_Basic(gadgetID, alias, type, valueTemplate, requestSpec, pollDelaySeconds, gadgetIp, gadgetPort, unitMac);
+                    synchronized (lock_gadgets) {
+                        gadgets.put(gadgetID, newGadget);
+                        //TODO: New gadget should NOT be sent to PS here. Instead that should be done by poll, when isPresent == true.
+                        //TODO: = Notify public server of new gadget(s) (#351): This is automatically done when gadget is discovered in poll()
+                        //TODO: In hub: Constructor should set gadgets to: isPresent = false, lastPoll = 0 (to force poll on next poll iteration).
+                        String output = String.format("351::%s", newGadget.toHoSoProtocol());
+                        ServerConnection.getInstance().writeToServer(output);
+                    }
+                    //TODO: Add new gadget to gadgets.json
                 }
-                //TODO: Add new gadget to gadgets.json
             }
         } catch (Exception e) {
             System.out.println("Error on reading in new gadgets.");
@@ -262,25 +275,42 @@ public class Hub {
         }
     }
 
+    // Used when adding gadgets (plug & play) to verify that a gadget do not already exist in hub.
+    private boolean gadgetAlreadyAdded(String unitMac) {
+        synchronized (lock_gadgets) {
+            for (int key : gadgets.keySet()) {
+                Gadget gadget = gadgets.get(key);
+                if (gadget instanceof Gadget_Basic) {
+                    if(((Gadget_Basic) gadget).getUnitMac().equals(unitMac)) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+    }
+
     private void createFakeGadgets() {
         synchronized (lock_gadgets) {
-            gadgets.put(1, new Gadget_Basic(1, "My Lamp", GadgetType.SWITCH, "light", "null", 30, "192.168.0.23", 8084));
-            gadgets.put(2, new Gadget_Basic(2, "Window Lamp", GadgetType.SWITCH, "light", "null", 60, "192.168.0.24", 8084));
-            gadgets.put(3, new Gadget_Basic(3, "Ad-blocker", GadgetType.SWITCH, "default", "null", 3600, "192.168.0.25", 8084));
-            gadgets.put(4, new Gadget_Basic(4, "Front door", GadgetType.BINARY_SENSOR, "door", "null", 2, "192.168.0.26", 8084));
-            gadgets.put(5, new Gadget_Basic(5, "Temperature", GadgetType.SENSOR, "temp", "temp", 120, "192.168.0.27", 8084));
+            gadgets.put(1, new Gadget_Basic(1, "My Lamp", GadgetType.SWITCH, "light", "null", 30, "192.168.0.23", 8084, "5C:CF:7F:0B:98:D8"));
+            gadgets.put(2, new Gadget_Basic(2, "Window Lamp", GadgetType.SWITCH, "light", "null", 60, "192.168.0.24", 8084,"00:0a:95:9d:68:16"));
+            gadgets.put(3, new Gadget_Basic(3, "Ad-blocker", GadgetType.SWITCH, "default", "null", 3600, "192.168.0.25", 8084, "00:A0:C9:14:C8:29"));
+            gadgets.put(4, new Gadget_Basic(4, "Front door", GadgetType.BINARY_SENSOR, "door", "null", 2, "192.168.0.26", 8084, "00:00:0A:BB:28:FC"));
+            gadgets.put(5, new Gadget_Basic(5, "Temperature", GadgetType.SENSOR, "temp", "temp", 120, "192.168.0.27", 8084, "00:1B:44:11:3A:B7"));
+            gadgets.put(6, new Gadget_Basic(6, "TV volume", GadgetType.SET_VALUE, "default", "null", 3600, "192.168.0.28", 8084, "1B:0C:74:3F:3A:7F"));
             gadgets.get(1).setState(1);
             gadgets.get(2).setState(1);
             gadgets.get(3).setState(1);
             gadgets.get(4).setState(1);
             gadgets.get(5).setState(21.7);
+            gadgets.get(6).setState(57);
         }
         printGadgets();
     }
 
     private void createFakeGroups() {
         gadgetGroups.add(new GadgetGroup("All lamps", new int[]{1, 2}));
-        gadgetGroups.add(new GadgetGroup("All gadgets", new int[]{1, 2, 3, 4 ,5}));
+        gadgetGroups.add(new GadgetGroup("All gadgets", new int[]{1, 2, 3, 4 ,5, 6}));
         gadgetGroups.add(new GadgetGroup("Kitchen", new int[]{2, 5}));
         gadgetGroups.add(new GadgetGroup("IT", new int[]{3}));
     }
@@ -288,7 +318,7 @@ public class Hub {
     private void launchFakePollResults() throws Exception {
         int count = 0;
         while(!terminate) {
-            Thread.sleep(12 * 1000);
+            Thread.sleep(30 * 1000);
             synchronized (lock_gadgets) {
                 count++;
                 // Toggle SWITCH gadget state
@@ -307,20 +337,20 @@ public class Hub {
     }
 
     private void printGadgets() {
-        System.out.println(String.format("%s%n%-8s%-18s%-16s%-19s%-17s%-10s%s%n%s",
-                line(), "ID", "ALIAS", "TYPE", "VALUE TEMPLATE", "IP", "PORT", "REQUEST SPEC", line()));
+        System.out.println(String.format("%s%n%-8s%-18s%-16s%-19s%-17s%-10s%-16s%s%n%s",
+                line(), "ID", "ALIAS", "TYPE", "VALUE TEMPLATE", "IP", "PORT", "REQUEST SPEC", "MAC", line()));
         synchronized (lock_gadgets) {
             for (int gadgetID : gadgets.keySet()) {
                 Gadget gadget = gadgets.get(gadgetID);
-                System.out.println(String.format("%-8s%-18s%-16s%-19s%-17s%-10s%s",
-                        gadget.id, gadget.alias, gadget.type.toString(), gadget.valueTemplate, ((Gadget_Basic)gadget).getIp(), ((Gadget_Basic)gadget).getPort(), gadget.requestSpec));
+                System.out.println(String.format("%-8s%-18s%-16s%-19s%-17s%-10s%-16s%s",
+                        gadget.id, gadget.alias, gadget.type.toString(), gadget.valueTemplate, ((Gadget_Basic)gadget).getIp(), ((Gadget_Basic)gadget).getPort(), gadget.requestSpec, ((Gadget_Basic)gadget).getUnitMac()));
             }
         }
         System.out.println(line());
     }
 
     private String line() {
-        return "====================================================================================================";
+        return "=========================================================================================================================";
     }
 
     public void debugLog(String log) {

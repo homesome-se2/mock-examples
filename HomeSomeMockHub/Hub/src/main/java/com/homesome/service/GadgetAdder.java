@@ -11,13 +11,11 @@ public class GadgetAdder {
     private int port;
     private volatile ServerSocket serverSocket;
 
+    private Thread listener;
+
     public GadgetAdder(int port) {
         this.port = port;
-    }
-
-    public void launch() {
-        System.out.println("Gadget adder running on " + getServerIP());
-        Thread listener = new Thread(new Runnable() {
+        listener = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -27,6 +25,11 @@ public class GadgetAdder {
                 }
             }
         });
+    }
+
+    public void launch() {
+        System.out.println("Gadget adder running on " + getServerIP());
+
         listener.start();
     }
 
@@ -36,6 +39,7 @@ public class GadgetAdder {
                 serverSocket.close();
                 serverSocket = null;
             }
+            System.out.println("Closing GadgetAdder");
         } catch (IOException e) {
             System.out.println("Gadget adder shutting down.");
         }
@@ -48,32 +52,34 @@ public class GadgetAdder {
         // Launch server
         serverSocket = new ServerSocket(port);
 
-        while (!Hub.getInstance().terminate) {
-            Socket clientConnection = null;
+        while (true) { //TODO: !terminate
+            Socket clientSocket = null;
 
             try {
                 // Receive client connection requests
-                clientConnection = serverSocket.accept();
+                clientSocket = serverSocket.accept();
+                // Force session timeout after specified interval after connection succeeds.
+                clientSocket.setSoTimeout(3500);
 
                 // Obtain output & input streams
-                output = new BufferedWriter(new OutputStreamWriter(clientConnection.getOutputStream()));
-                input = new BufferedReader(new InputStreamReader(clientConnection.getInputStream()));
+                output = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+                input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
                 String request = input.readLine();
                 String commands[] = request.split("::");
 
+                System.out.println("Input from client: " + request);
+
                 // Process requests
                 switch (commands[0]) {
-                    case "601":
-                        // Request from Android to verify hub address in LAN
+                    case "601": // Request from Android to verify hub address in LAN
                         String response = String.format("%s::%s%n", "602", Hub.getInstance().settings.hubAlias);
                         output.write(response);
                         output.flush();
                         System.out.println("Hub is pinged");
                         break;
-                    case "620":
-                        // Request from gadget device to add gadget(s) to hub.
-                        request = String.format("%s::%s", request, getClientIP(clientConnection)); // Append client IP
+                    case "620": // Request from gadget device to add gadget(s) to hub.
+                        request = String.format("%s::%s", request, getClientIP(clientSocket)); // Append client IP
                         Hub.getInstance().requests.put(request);
                         output.write(String.format("%s%n", "621"));
                         output.flush();
@@ -86,8 +92,8 @@ public class GadgetAdder {
             } catch (Exception e) {
                 // Ignore
             } finally {
-                if (clientConnection != null) {
-                    clientConnection.close();
+                if (clientSocket != null) {
+                    clientSocket.close();
                 }
             }
         }

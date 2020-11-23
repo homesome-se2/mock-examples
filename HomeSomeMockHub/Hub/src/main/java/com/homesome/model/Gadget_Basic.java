@@ -4,12 +4,14 @@ public class Gadget_Basic extends Gadget {
 
     private String ip;
     private int port;
+    private String unitMac;
 
     public Gadget_Basic(int gadgetID, String alias, GadgetType type, String valueTemplate, String requestSpec,
-                        long pollDelaySeconds, String ip, int port) {
+                        long pollDelaySeconds, String ip, int port, String unitMac) {
         super(gadgetID, alias, type, valueTemplate, requestSpec, pollDelaySeconds);
         this.ip = ip;
         this.port = port;
+        this.unitMac = unitMac;
     }
 
     @Override
@@ -40,5 +42,9 @@ public class Gadget_Basic extends Gadget {
 
     public int getPort() {
         return port;
+    }
+
+    public String getUnitMac() {
+        return unitMac;
     }
 }

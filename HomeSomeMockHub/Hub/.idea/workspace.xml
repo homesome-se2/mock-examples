@@ -6,7 +6,25 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23f3d9a8-8abd-4cbb-9632-e554d95b6794" name="Default Changelist" comment="" />
+    <list default="true" id="23f3d9a8-8abd-4cbb-9632-e554d95b6794" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../HomeSomeMockClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../HomeSomeMockClient/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hub.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Hub_jar/Hub.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Hub_jar/Hub.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/homesome/model/Gadget.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/homesome/model/Gadget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/homesome/model/GadgetGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/homesome/model/GadgetGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/homesome/model/Gadget_Basic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/homesome/model/Gadget_Basic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/homesome/service/GadgetAdder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/homesome/service/GadgetAdder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/homesome/service/Hub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/homesome/service/Hub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/homesome/model/Gadget.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/homesome/model/Gadget.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/homesome/model/Gadget_Basic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/homesome/model/Gadget_Basic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/homesome/service/GadgetAdder$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/homesome/service/GadgetAdder$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/homesome/service/GadgetAdder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/homesome/service/GadgetAdder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/homesome/service/Hub$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/homesome/service/Hub$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/homesome/service/Hub.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/homesome/service/Hub.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webclientExampelTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../webclientExampelTest.html" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,14 +67,70 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="335160307">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="9" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.29" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.30" value="2" />
+          <entry key="project.open.time.31" value="1" />
+          <entry key="project.open.time.32" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.43" value="2" />
+          <entry key="project.open.time.58" value="1" />
+          <entry key="project.opened" value="12" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="10" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="10" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="1347" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="1347" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/service/Hub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="33" column="6" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
+            <state relative-caret-position="2625">
+              <caret line="201" selection-start-line="201" selection-end-line="201" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/model/Gadget.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="748">
+              <caret line="44" column="99" selection-start-line="44" selection-start-column="99" selection-end-line="44" selection-end-column="99" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/model/Gadget_Basic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="748">
+              <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -64,31 +138,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/web_resources/ServerConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="58" column="14" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="14" />
+            <state relative-caret-position="1224">
+              <caret line="77" column="55" selection-start-line="77" selection-start-column="54" selection-end-line="77" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/model/Settings.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/service/GadgetAdder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/Driver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            <state relative-caret-position="1292">
+              <caret line="80" column="86" selection-start-line="80" selection-start-column="86" selection-end-line="80" selection-end-column="86" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -96,11 +164,12 @@
         <option value="$PROJECT_DIR$/src/main/java/homesome/model/GadgetType.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/homesome/web_resources/WebSocketClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/homesome/model/Gadget.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/homesome/model/Gadget_Basic.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/homesome/service/GadgetAdder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/homesome/model/Settings.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/homesome/web_resources/ServerConnection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/homesome/model/GadgetGroup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/homesome/model/Gadget_Basic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/homesome/service/GadgetAdder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/homesome/model/Gadget.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/homesome/service/Hub.java" />
       </list>
     </option>
@@ -112,17 +181,19 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
-    <option name="y" value="35" />
-    <option name="width" value="1296" />
-    <option name="height" value="1000" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -201,24 +272,16 @@
               <item name="homesome" type="462c0819:PsiDirectoryNode" />
               <item name="web_resources" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Hub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Hub" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1603829912983" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1606124789027" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -262,6 +325,64 @@
       <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/Hub_jar/Hub.jar" />
       <method v="2" />
     </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="_new_regexPattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Twisted Trial">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Driver" />
       <item itemvalue="JAR Application.Hub.jar" />
@@ -287,64 +408,49 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="35" width="1296" height="1000" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24838188" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18336888" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.329718" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.44803694" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4967462" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/model/Gadget_Basic.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/web_resources/ServerConnection.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/Driver.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/service/GadgetAdder.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/web_resources/WebSocketClient.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/model/GadgetGroup.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/model/Settings.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/model/GadgetType.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/model/Gadget_Basic.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/web_resources/ServerConnection.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/Driver.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/service/GadgetAdder.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/web_resources/WebSocketClient.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/model/GadgetGroup.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/model/Settings.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/model/GadgetType.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="731">
@@ -352,32 +458,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/model/Gadget.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/service/Hub.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="12" column="42" lean-forward="true" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/model/Gadget.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/homesome/service/Hub.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/model/GadgetType.java">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/model/Gadget_Basic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/service/GadgetAdder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/web_resources/WebSocketClient.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -388,22 +472,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/model/GadgetGroup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/model/Gadget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/Driver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="357">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
@@ -414,17 +484,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/service/GadgetAdder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1292">
+          <caret line="80" column="86" selection-start-line="80" selection-start-column="86" selection-end-line="80" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/model/Gadget.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="44" column="99" selection-start-line="44" selection-start-column="99" selection-end-line="44" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/model/Gadget_Basic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/web_resources/ServerConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="58" column="14" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="14" />
+        <state relative-caret-position="1224">
+          <caret line="77" column="55" selection-start-line="77" selection-start-column="54" selection-end-line="77" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/homesome/service/Hub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="33" column="6" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
+        <state relative-caret-position="2625">
+          <caret line="201" selection-start-line="201" selection-end-line="201" />
         </state>
       </provider>
     </entry>

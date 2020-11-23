@@ -1,6 +1,6 @@
 {
   "debugMode": true,
-  "enableAddGadgets": false,
+  "enableAddGadgets": true,
   "tcpPortAddGadgets": 8084,
   "enableRemoteAccess": true,
   "hubAlias": "My residence",
